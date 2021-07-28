@@ -1,0 +1,5 @@
+﻿interface IDecoration
+{
+    void InvokeDecoration();
+    
+}
