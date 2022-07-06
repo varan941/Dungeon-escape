@@ -1,34 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class AcidEffect : MonoBehaviour
+namespace Enemies.Effects
 {
-    public float _time=5.0f;
-    private void Start()
+    public class AcidEffect : MonoBehaviour
     {
-        Destroy(this.gameObject, _time); // уничтож. сопл. через 5 сек.
-    }
-
-    private void Update()
-    {
-        transform.Translate(Vector2.right*3*Time.deltaTime); // сопля двигает. вправо со скор. 3
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag=="Player") // провер. задела ли сопля игрока
+        public float _time = 5.0f;
+        private void Start()
         {
-            IDamageable hit = other.GetComponent<IDamageable>(); // берём комп. IDamageable
+            Destroy(this.gameObject, _time);
+        }
 
-            if (hit!=null)
+        private void Update()
+        {
+            transform.Translate(Vector2.right * 3 * Time.deltaTime);
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.tag == "Player")
             {
-                hit.Damage(); // наносим  урон
-                Destroy(this.gameObject); // уичтожаем соплю
+                IDamageable hit = other.GetComponent<IDamageable>();
+
+                if (hit != null)
+                {
+                    hit.Damage();
+                    Destroy(this.gameObject);
+                }
             }
         }
-        
     }
-  
 }
+
