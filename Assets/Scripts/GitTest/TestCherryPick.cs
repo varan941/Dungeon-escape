@@ -4,5 +4,6 @@
     {
         // Init TestCherryPick
         // add some code #!
+        // add some code #2
     }
 }
